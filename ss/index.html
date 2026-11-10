@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emulator Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Library View -->
+  <div id="library-view">
+    <header class="app-header">
+      <h1 class="logo">Emulator Vault</h1>
+    </header>
+
+    <main class="grid-container">
+      <article class="emu-card nes">
+        <header class="emu-card-header">
+          <h2>NES</h2>
+        </header>
+        <div class="emu-card-body">
+          <h3>Nintendo Entertainment System</h3>
+          <span class="badge">8-Bit • 1983</span>
+          <p>Launch the 8-bit NES emulator core to load local ROM files directly in your browser.</p>
+          <button type="button" class="btn" id="launch-nes">Launch</button>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Player Screen View -->
+  <div id="player-view" class="hidden">
+    <header class="player-header">
+      <button id="back-btn" class="btn-secondary">← Back to Vault</button>
+      <h2>NES Core</h2>
+      
+      <!-- Core Switcher Toggle -->
+      <div class="core-selector">
+        <button id="btn-custom-core" class="core-toggle active">Custom Core</button>
+        <button id="btn-jsnes-core" class="core-toggle">JSNES</button>
+      </div>
+    </header>
+
+    <main class="screen-container">
+      <!-- Game Display Screen -->
+      <div class="canvas-wrapper">
+        <canvas id="nes-canvas" width="256" height="240"></canvas>
+        <div class="screen-overlay">Load a ROM file to start playing</div>
+      </div>
+
+      <!-- Controls Overlay / Mobile Layout -->
+      <div class="controls">
+        <div class="top-row">
+          <input type="file" id="rom-input" accept=".nes,.bin" class="file-input">
+          <label for="rom-input" class="file-label">Load ROM</label>
+        </div>
+
+        <div class="gamepad">
+          <!-- Directional Pad -->
+          <div class="dpad">
+            <button class="dpad-btn up" data-key="ArrowUp">▲</button>
+            <button class="dpad-btn left" data-key="ArrowLeft">◀</button>
+            <button class="dpad-btn right" data-key="ArrowRight">▶</button>
+            <button class="dpad-btn down" data-key="ArrowDown">▼</button>
+            <div class="dpad-center"></div>
+          </div>
+
+          <!-- Select / Start -->
+          <div class="center-btns">
+            <button class="pill-btn" data-key="Shift">Select</button>
+            <button class="pill-btn" data-key="Enter">Start</button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-btns">
+            <button class="action-btn" data-key="KeyZ">B</button>
+            <button class="action-btn" data-key="KeyX">A</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

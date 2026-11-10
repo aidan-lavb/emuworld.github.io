@@ -1,0 +1,252 @@
+:root {
+  --bg-main: #121214;
+  --bg-card: #1e1e24;
+  --nes-red: #e60012;
+  --nes-red-hover: #b3000e;
+  --text-bright: #ffffff;
+  --text-muted: #a0a0a0;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --btn-dark: #2d2d35;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-bright);
+  padding: 1.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Header & Grid */
+.app-header, .player-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--nes-red);
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Core Selector Toggle */
+.core-selector {
+  display: flex;
+  background: #111;
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid #333;
+}
+
+.core-toggle {
+  background: transparent;
+  color: #888;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.core-toggle.active {
+  background: var(--nes-red);
+  color: var(--text-bright);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.emu-card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.emu-card-header {
+  background-color: var(--nes-red);
+  padding: 1rem;
+  text-align: center;
+}
+
+.emu-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn, .btn-secondary {
+  background-color: var(--nes-red);
+  color: var(--text-bright);
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-secondary {
+  background-color: var(--btn-dark);
+}
+
+/* Screen Layout */
+.screen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #000;
+  border-radius: 8px;
+  border: 4px solid var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nes-canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.screen-overlay {
+  position: absolute;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* File Loader */
+.file-input { display: none; }
+.file-label {
+  background: var(--btn-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Controller Layout */
+.gamepad {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  gap: 1rem;
+}
+
+/* D-Pad */
+.dpad {
+  position: relative;
+  width: 110px;
+  height: 110px;
+}
+
+.dpad-btn {
+  position: absolute;
+  background: var(--btn-dark);
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.dpad-btn:active { background: #444; }
+
+.dpad .up { top: 0; left: 37px; width: 36px; height: 40px; border-radius: 4px 4px 0 0; }
+.dpad .down { bottom: 0; left: 37px; width: 36px; height: 40px; border-radius: 0 0 4px 4px; }
+.dpad .left { top: 37px; left: 0; width: 40px; height: 36px; border-radius: 4px 0 0 4px; }
+.dpad .right { top: 37px; right: 0; width: 40px; height: 36px; border-radius: 0 4px 4px 0; }
+.dpad-center { position: absolute; top: 37px; left: 37px; width: 36px; height: 36px; background: var(--btn-dark); }
+
+/* Center Pills */
+.center-btns {
+  display: flex;
+  gap: 0.5rem;
+  align-self: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.pill-btn {
+  background: var(--btn-dark);
+  color: var(--text-muted);
+  border: none;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Action Buttons */
+.action-btns {
+  display: flex;
+  gap: 0.75rem;
+  transform: rotate(-10deg);
+}
+
+.action-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--nes-red);
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #80000a;
+}
+
+.action-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #80000a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .gamepad {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .center-btns {
+    align-self: center;
+  }
+}
